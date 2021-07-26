@@ -5,6 +5,15 @@
     --white-color: #e7e7e7;
 }
 
+.even {
+    font-weight: bold;
+    font-size: large;
+}
+
+.odd {
+    font-weight: 100;
+}
+
 body {
     color: var(--dark-color);
 }
@@ -61,6 +70,12 @@ word-break: break-all;
 word-wrap: break-word;
 }
 
+
+.logoFont {
+    font-family: Racing sans, sans-serif;
+    font-weight: 600;
+    font-style: italic;
+}
 
 main>.container {
     padding: 60px 15px 0;

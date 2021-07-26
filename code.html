@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>APP NAME: Coding Project By Usama Mobeen</title>
+    <title>HUNDO: Coding Project By Usama Mobeen</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,7 +23,7 @@
 <!--==== Nav Section ====-->
 <nav class="navbar navbar-expand-md navbar-dark fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><i class="fas fa-laptop-code me-1" style="color: #FFBD4A;"></i>MY APP</a>
+        <a class="navbar-brand logoFont" href="#"><i class="fas fa-laptop-code me-1" style="color: #FFBD4A;"></i>HUNDO</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -40,10 +40,10 @@
                     <a class="nav-link active" aria-current="page" href="/code.html">The Code</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" target="blank" href="#">GitHub</a>
+                    <a class="nav-link" target="_blank" href="https://github.com/UsamaMobeen/HundoSite">GitHub</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" target="blank" href="#">About</a>
+                    <a class="nav-link" target="_blank"  href="https://me-usama.netlify.app">About</a>
                 </li>
             </ul>
         </div>
@@ -52,21 +52,89 @@
 <!--==== Main Section ====-->
     <main class="flex-shrink-0">
      <div class="container g-5 py-5 px-5 mt-5">
-        <h2 class="border-1 border-bottom border-dark">The Code For My App</h2>
+        <h2 class="border-1 border-bottom border-dark">The Code For Hundo</h2>
         <div class="row row-col-1 row-cols-lg-2">
             <div class="col-lg-8">
                 <pre class="line-numbers"><code class="language-javascript">
-                        //Call Hello  World
-                        function HelloWorld() {
-                             alert("Hello World");
-                        }
-                    </code>
+                        
+
+//get the values from the Page
+//starts or controller function
+function getValues()
+{
+    //get the values from the Page
+    let startValue =  document.getElementById("startValue").value;
+    let endValue = document.getElementById("endValue").value;
+
+    //We need to validate our inputs
+    //parse into Integers
+    startValue = parseInt(startValue);
+    endValue = parseInt(endValue);
+    let generatedNumbers = [];
+    if (Number.isInteger(startValue) && Number.isInteger(endValue)) {
+         //call generateNumbers
+         generatedNumbers = generateNumbers(startValue,endValue);
+      
+    }else{
+        alert("You must enter an Integer");
+    }   
+
+    //call displayNumbers
+    displayNumbers(generatedNumbers);
+}
+
+//logic function
+//generate numbers from startValue to the endValue
+function generateNumbers(sValue, eValue){
+
+    let numbers = [];
+
+    //we want to get numbers from start to end
+    for (let index = sValue; index <= eValue; index++) {
+        //this will execute in a loop until index = eValue
+       numbers.push(index);
+        
+    }
+
+    return numbers;
+}
+
+//display or view numbers
+//display the numbers and mark even numbers bold
+function displayNumbers(generatedNumbers){
+    let templateRows = "";
+    for (let index = 0; index < generatedNumbers.length; index++) {
+     let number = generatedNumbers[index];
+     let className = "even";
+     if(number % 2 == 0){
+        className = "even";
+     }else{
+        className = "odd";
+     }
+     //This does'nt render correctly with Prisim see 
+     //the source code on github
+     templateRows += `<tr><td class = "${className}">${number}</td></tr>`;
+        
+    }
+
+    document.getElementById("results").innerHTML= templateRows;
+}
+                </code>
                 </pre>
             </div>
-            <div class="col-lg-4">
-                <p>The Code is structed in one function.</p>
-                <h5>Hello World</h5>
-                <p>Hello World is a function that displays an alert with a message of "Hello World"</p>
+            <div class="col-lg-4 pt-2">
+                <h5 class="pb-2 border-bottom border-2">getValues()</h5>
+                <p>The getValues() function is responsible for retrieving the numbers the user provides in our input fields and parsing them as integers. If both inputs provided by the user are both numbers than we will call the generateNumbers() and displayNumbers() functions described below.</p>
+                <br>
+                <h5 class="pb-2 border-bottom border-2">generateNumbers()</h5>
+                <p>The generateNumbers() function takes two parameters which are the starting value and the end value. The function uses a for loop to iterate through the numbers between the values the user provided and pushes those numbers to an array. The array is then returned.</p>
+                <br>
+                <h5 class="pb-2 border-bottom border-2">displayNumbers()</h5>
+                <p>The displayNumbers function takes one parameter which is an array of integers. The function retrieves the table we made in HTML using the id and then sets the innerHTML to be empty so if the user spams the button it does not constantly add to the old table. Then using a for loop to iterate through the array of numbers (these are all the numbers between the 2 values the user provided) I seperate the numbers into two categories using if statements. If the number is divisible by two then I want the number to appear bolded otherwise the number wilk appear normally</p>
+                <br>
+                <br>
+                <h5 class="pb-2 border-bottom border-2">Conclusion</h5>
+                <p>The javascript code written for this app takes the user input and finds all numbers between those two. I then determine if when the numbers between what the user entered are divisible by 2 and if they are I apply a strong tag, otherwise no style is applied. The array of numbers is then added to table.</p>
             </div>
         </div>
      </div>
@@ -86,10 +154,10 @@
              <div class="col d-flex align-items-center justify-content-start justify-content-lg-end">
                  <div class="row">
                       <div class="col social">
-                        <a href="#" target="blank"><i class="fab fa-linkedin fa-2x"></i></a>
+                        <a href="https://www.linkedin.com/in/usama-mobeen-56088b201/" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
                       </div>
                       <div class="col social">
-                        <a href="#" target="blank"><i class="fab fa-github fa-2x"></i></a>
+                        <a href="https://github.com/UsamaMobeen/HundoSite" target="_blank"><i class="fab fa-github fa-2x"></i></a>
                       </div>
                       <div class="col social">
                         <a href="#" target="blank"><i class="fab fa-twitter fa-2x"></i></a>
